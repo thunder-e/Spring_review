@@ -1,5 +1,7 @@
 package com.sw.re1.bankbook;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +17,9 @@ public class BankBookController {
 	
 	//상품리스트 bankbooList  get
 	@RequestMapping(value="/bankbook/bankbookList")
-	public void bankbookList() throws Exception {
-		
+	public void bankbookList(Model model) throws Exception {
+		List<BankBookDTO> dto = bankBookService.getList();
+		model.addAttribute("list", dto);
 	}
 	
 	//상품등록 bankbookAdd get/	post-parameter(bookName, bookRate, bookSale)
@@ -26,8 +29,12 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value="/bankbook/bankbookAdd", method=RequestMethod.POST)
-	public void bankbookAdd(ModelAndView mv) throws Exception {
-		
+	public ModelAndView bankbookAdd(BankBookDTO bankBookDTO,ModelAndView mv) throws Exception {
+		int result = bankBookService.setAdd(bankBookDTO);
+		mv.addObject("dto", bankBookDTO);
+		mv.setViewName("redirect:bankbookList");
+		System.out.println(result + "추가완료");
+		return mv;
 	}
 	
 	
