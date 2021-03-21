@@ -40,7 +40,7 @@
 
 	<h1>Member Login Page</h1>
 	
-	<form class="form-inline" action="./memberLogin">
+	<form class="form-inline" action="./memberLogin" method="post">
   <div class="form-group">
     <label for="id">ID:</label>
     <input type="text" class="form-control" id="id">
@@ -49,10 +49,7 @@
     <label for="pw">Password:</label>
     <input type="password" class="form-control" id="pw">
   </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default">Login</button>
 </form>
 	
 	

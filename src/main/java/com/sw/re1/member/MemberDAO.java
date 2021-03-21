@@ -13,8 +13,8 @@ public class MemberDAO {
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		
 		//1. 로그인 
-		String id = "user01";
-		String pw =  "user01";
+		String user = "user01";
+		String password =  "user01";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 	
@@ -22,7 +22,7 @@ public class MemberDAO {
 		Class.forName(driver);
 		
 		//3. 로그인 connection
-		Connection con = DriverManager.getConnection(url, id, pw);
+		Connection con = DriverManager.getConnection(url, user, password);
 		
 		//4. sql문 작성
 		String sql = "insert into member values (?,?,?,?,?)";
@@ -52,14 +52,14 @@ public class MemberDAO {
 	
 	public MemberDTO login(MemberDTO memberDTO) throws Exception{
 		
-		String id = "user01";
-		String pw = "user01";
+		String user = "user01";
+		String password = "user01";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		
 		Class.forName(driver);
 		
-		Connection con = DriverManager.getConnection(url, id, pw);
+		Connection con = DriverManager.getConnection(url, user, password);
 		
 		String sql = "select * from member where id = ? and pw =?";
 		
