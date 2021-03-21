@@ -20,6 +20,16 @@ public class MemberController {
 	@RequestMapping(value="/member/memberJoin", method=RequestMethod.POST)
 	public void memberJoin(MemberDTO memberDTO, ModelAndView mv) throws Exception{
 		
+		System.out.println(memberDTO.getId());
+		System.out.println(memberDTO.getPw());
+		System.out.println(memberDTO.getName());
+		System.out.println(memberDTO.getEmail());
+		System.out.println(memberDTO.getPhone());
+		
+		
+		int result = memberService.memberJoin(memberDTO);
+			
+		System.out.println(result);
 	}
 	
 	@RequestMapping(value="/member/memberLogin")
